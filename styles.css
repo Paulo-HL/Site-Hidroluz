@@ -1294,4 +1294,33 @@ body {
     font-size: 1.5rem;
   }
 }
+@media (max-width: 768px) {
+  .header {
+    padding: 0.8rem 0;
+  }
 
+  .header .container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .foto img {
+    width: 55px;
+    height: 55px;
+  }
+
+  .logo h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+
+  .logo p {
+    font-size: 0.75rem;
+  }
+
+  .nav {
+    gap: 1rem;
+    font-size: 0.85rem;
+  }
+}
