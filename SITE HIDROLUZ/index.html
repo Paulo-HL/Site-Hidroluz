@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hidroluz - Materias para construçao </title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="foto">
+                <img src="img/logo.jpeg" alt="Hidroluz Logo">
+            </div>
+            <div class="logo">
+                <h1>HIDROLUZ</h1>
+                <p>Itapetininga - SP</p>
+            </div>
+            <nav class="nav">
+                <a href="#home">Início</a>
+                <a href="#produtos">Venda</a>
+                <a href="#lojas">Lojas</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Banner Automático -->
+    <section class="banner" id="home">
+        <div class="banner-slide active">
+            <div class="banner-content">
+                <img src="img/banner 3.png" alt="banner 1">
+                <p>Equipamentos de qualidade para sua obra</p>
+                <a href="#lojas" class="btn">Ver Ferramentas</a>
+            </div>
+        </div>
+        <div class="banner-slide">
+            <div class="banner-content">
+                <img src="img/banner2.jpg" alt="banner2">
+                <p>Tudo que você precisa em um só lugar</p>
+                <a href="#lojas" class="btn">Conheça Mais</a>
+            </div>
+        </div>
+        <div class="banner-slide">
+            <div class="banner-content">
+               <img src="img/banner.png" alt="banner">
+                <p>Receba suas ferramentas em tempo recorde</p>
+                <a href="#contato" class="btn">Solicitar Orçamento</a>
+            </div>
+        </div>
+        <div class="banner-controls">
+            <button class="banner-prev" onclick="prevSlide()">❮</button>
+            <button class="banner-next" onclick="nextSlide()">❯</button>
+        </div>
+        <div class="banner-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- Destaque Entrega Rápida -->
+    <section class="fast-delivery">
+        <div class="container">
+            <div class="delivery-content">
+                <div class="delivery-icon">⚡</div>
+                <div>
+                    <h3>A ENTREGA MAIS RÁPIDA</h3>
+                    <p>Receba suas ferramentas no mesmo dia em Itapetininga</p>
+                </div>
+            </div>
+        </div>
+    </section>
+        
+    
+ <section class="lojas" id="lojas">
+        <div class="container">
+            <h2 class="section-title">Nossas 3 Lojas em Itapetininga</h2>
+            <div class="lojas-grid">
+                <div class="loja-card">
+                    <div class="loja-number">01</div>
+                    <h3>Loja 1</h3>
+                    <p>📍 Rua Antonio Victor de Menezes N 8</p>
+                    <p>Vila: Jd Cambui</p>
+                    <p>📞 (15) 3272-2927</p>
+                    <p>📞 (15) 99663-9799</p>
+                    <p>🕐 Seg-Sex: 7:30-18h | Sáb: 7:30-16h</p>
+                </div>
+                <div class="loja-card">
+                    <div class="loja-number">02</div>
+                    <h3>Loja 2</h3>
+                    <p>📍 Rod. Aristides da Costa Barros N 903</p>
+                    <p>Vila: Mazzei</p>
+                    <p>📞 (15) 3275-1942</p>
+                    <p>🕐 Seg-Sex: 7:30-18h | Sáb: 7:30-16h</p>
+                </div>
+                <div class="loja-card">
+                    <div class="loja-number">03</div>
+                    <h3>Loja 3</h3>
+                    <p>📍 R.Gumercindo Soares Hungria n 793</p>
+                    <p>Vila: Chapadinha</p>
+                    <p>📞 (15) 99839-0589</p>
+                    <p>🕐 Seg-Sex: 7:30-18h | Sáb: 7:30-16h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lojas -->
+    <section class="lojas" id="lojas">
+        <div class="container">
+            <h2 class="section-title">Nossas unidades</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-image"></div>
+                    <img src="img/loja1.jpeg" alt="lojaC">
+                    <h3>Loja 1</h3>
+                    <p>Qualidade e confiança para sua obra do início ao fim</p>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <img src="img/loja2.jpeg" alt="lojaM">
+                    <h3>Loja 2</h3>
+                    <p>Mais energia para seus projetos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <img src="img/loja3.jpeg" alt="lojaP">
+                    <h3>Loja 3</h3>
+                    <p>A solução está aqui.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Produtos para Venda -->
+    <section class="produtos" id="produtos">
+        <div class="produtos-container">
+            <!-- Sidebar com opções -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Filtros</h3>
+                </div>
+
+                <!-- Filtro de Tipo -->
+                <div class="sidebar-section">
+                    <h4>Categoria</h4>
+                    <label class="checkbox">
+                        <input type="checkbox" class="filtro-categoria" value="eletricas">
+                        <span>Elétricas</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="filtro-categoria" value="ferragens">
+                        <span>Ferragens</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="filtro-categoria" value="cimentos" checked>
+                        <span>Cimentos</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="filtro-categoria" value="promoção">
+                        <span>Promoção</span>
+                    </label>
+                    <label class="checkbox">
+                        <input type="checkbox" class="filtro-categoria" value="Hidraulica">
+                        <span>Hidraulica</span>
+                    </label>
+                </div>
+
+                <button class="btn-filtrar">Aplicar Filtros</button>
+                <button class="btn-ver-tudo">Ver Todos</button>
+            </aside>
+
+            <!-- Produtos Grid -->
+            <main class="produtos-grid">
+                <h2 class="section-title">Produtos à Venda</h2>
+                
+                <div class="cards-produtos">
+                    <div class="produto-card" data-categoria="cimentos" data-preco="33,90" data-tipo="Venda">
+                        <div class="produto-image">
+                            <img src="img/votoran.jpg" alt="votoran">
+                            <span class="badge-produto">Promoção</span>
+                        </div>
+                        <h3>Cimento votoran 50KG CP2</h3>
+                        <p class="descricao">VOTORAN</p>
+                        <div class="preco">R$ 33,90</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(+999 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('cimentos 50kg', 33.90, 'Venda')">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="eletricas" data-preco="1200">
+                        <div class="produto-image">
+                            <img src="img/furadeira.png" alt="Furadeira Profissional">
+                        </div>
+                        <h3>Furadeira Elétrica 1200W</h3>
+                        <p class="descricao">Potência e precisão para furos perfeitos em qualquer material</p>
+                        <div class="preco">R$ 399,00</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(12 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Furadeira 1200W', 399.00)">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="ferragens" data-preco="850">
+                        <div class="produto-image">
+                            <img src="img/FERRO.png" alt="Kit Ferragens Premium">
+                        </div>
+                        <h3>Kit Ferragens Premium</h3>
+                        <p class="descricao">50 peças variadas para construção e manutenção</p>
+                        <div class="preco">R$ 850,00</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(20 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Kit Ferragens', 850)">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="cimentos" data-preco="30,90" data-tipo="cimentos">
+                        <div class="produto-image">
+                            <img src="img/caue.png" alt="caue">
+                            <span class="badge-produto">Mais vendido</span>
+                        </div>
+                        <h3>Caue 50kg CP2</h3>
+                        <p class="descricao">Modelo mais potente com capacidade aumentada para grandes obras</p>
+                        <div class="preco">R$ 33,90</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(+999 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Votoran 50kg CP2', 33.90)">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="promoção" data-preco="950">
+                        <div class="produto-image">
+                            <img src="img/onix.jpg" alt="Vaso Sanitário Onix">
+                        </div>
+                        <h3>Vaso Sanitário Onix</h3>
+                        <p class="descricao">Banheiro moderno e funcional</p>
+                        <div class="preco">R$ 399,90</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(+15 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Vaso Sanitário Onix', 399.90)">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="ferragens" data-preco="1100">
+                        <div class="produto-image">
+                            <img src="img/bloquinho.jpg" alt="Tijolo bloquinho">
+                        </div>
+                        <h3>Tijolo bloquinho 9 furos</h3>
+                        <p class="descricao">11,5 x 14x 24</p>
+                        <div class="preco">R$ 1.100,00</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(+999 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Tijolo bloquinho 9 furos', 1100)">🛒 Comprar</button>
+                        </div>
+                    </div>
+
+                    <div class="produto-card" data-categoria="promoção" data-preco="3.50">
+                        <div class="produto-image">
+                            <img src="img/lampada.png" alt="Lâmpada LED Profissional">
+                            <span class="badge-produto">PROMOÇÃO</span>
+                        </div>
+                        <h3>Lâmpada LED 50W Profissional</h3>
+                        <p class="descricao">Lâmpada LED de alta luminosidade para iluminação de obras</p>
+                        <div class="preco">R$ 3,50</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(80 unidades)</span>
+                        </div>
+                        <div class="alerta-promocao">⚡ <strong>PROMOÇÃO:</strong> Acima de 10 unidades = R$ 2,99 cada!</div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Lâmpada LED 50W', 3.50)">🛒 Comprar</button>
+                        </div>
+                    </div>
+                    <div class="produto-card" data-categoria="promoção" data-preco="439,00">
+                        <div class="produto-image">
+                            <img src="img/gabinete.png" alt="Gabinete de Computador">
+                            <span class="badge-produto">PROMOÇÃO</span>
+                        </div>
+                        <h3>Gabinete de 1,20</h3>
+                        <p class="descricao">Gabinete com excelente ventilação e design moderno</p>
+                        <div class="preco">R$ 439,00</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(80 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Gabinete de 1,20', 439.00)">🛒 Comprar</button>
+                        </div>
+                    </div>
+                    <div class="produto-card" data-categoria="Hidraulica" data-preco="82,90">
+                        <div class="produto-image">
+                            <img src="img/tubot.png" alt="Tubo 100mm">
+                        </div>
+                        <h3>Tubo esgoto 100mm</h3>
+                        <p class="descricao">Tubo esgoto Tigre 100mm 6 metros</p>
+                        <div class="preco">R$ 82,90</div>
+                        <div class="estoque">
+                            <span class="estoque-badge">Em Estoque</span>
+                            <span class="quantidade">(+999 unidades)</span>
+                        </div>
+                        <div class="produto-opcoes">
+                            <button class="btn-pequeno" onclick="adicionarAoCarrinho('Tubo esgoto 100mm', 82.90)">🛒 Comprar</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <!-- Modal do Carrinho -->
+    <div id="modal-carrinho" class="modal-carrinho">
+        <div class="modal-conteudo">
+            <button class="modal-fechar" onclick="fecharCarrinho()">&times;</button>
+            
+            <h2>🛒 Seu Carrinho</h2>
+
+            <div class="carrinho-resumo">
+                <div class="resumo-linha">
+                    <span id="resumo-tipo">Compra - Subtotal:</span>
+                    <span id="resumo-subtotal">R$ 0,00</span>
+                </div>
+                <div class="resumo-linha total">
+                    <span>TOTAL:</span>
+                    <span id="resumo-total">R$ 0,00</span>
+                </div>
+            </div>
+
+            
+            <div class="carrinho-produto">
+                <div class="carrinho-info">
+                    <h3 id="carrinho-nome"></h3>
+                    <p id="carrinho-preco" class="preco-destaque"></p>
+                </div>
+            </div>
+
+            <div class="carrinho-separador"></div>
+
+            <!-- Quantidade -->
+            <div class="carrinho-secao">
+                <h4>📦 Quantidade</h4>
+                <div class="quantidade-selector">
+                    <button onclick="diminuirQuantidade()">−</button>
+                    <input type="number" id="carrinho-quantidade" value="1" min="1" max="100">
+                    <button onclick="aumentarQuantidade()">+</button>
+                </div>
+            </div>
+
+            <div class="carrinho-separador"></div>
+
+            <!-- Opções de Entrega -->
+            <div class="carrinho-secao">
+                <h4>🚚 Tipo de Entrega</h4>
+                <label class="radio-carrinho">
+                    <input type="radio" name="entrega-carrinho" value="retirada" checked onchange="mostrarCamposEndereco()">
+                    <span>🏪 Retirada na loja</span>
+                </label>
+                <label class="radio-carrinho">
+                    <input type="radio" name="entrega-carrinho" value="entrega" onchange="mostrarCamposEndereco()">
+                    <span>🚚 Entrega em casa</span>
+                </label>
+            </div>
+
+            <!-- Campos de Retirada (aparecem com retirada) -->
+            <div id="retirada-campos" class="retirada-campos" style="display:block;">
+                <div class="campo-retirada">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="campo-nome-retirada" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-retirada">
+                    <label>Número de Telefone *</label>
+                    <input type="tel" id="campo-telefone-retirada" placeholder="(15) 99999-9999" required>
+                </div>
+            </div>
+
+            <!-- Campos de Endereço (aparecem apenas com entrega) -->
+            <div id="endereco-campos" class="endereco-campos" style="display:none;">
+                <div class="campo-endereco">
+                    <label>Nome Completo *</label>
+                    <input type="text" id="campo-nome-entrega" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-endereco">
+                    <label>Número de Telefone *</label>
+                    <input type="tel" id="campo-telefone-entrega" placeholder="(15) 99999-9999" required>
+                </div>
+                <div class="campo-endereco">
+                    <label>Endereço *</label>
+                    <input type="text" id="campo-endereco" placeholder="Rua, Avenida, etc..." required>
+                </div>
+                <div class="campo-endereco">
+                    <label>Número *</label>
+                    <input type="text" id="campo-numero" placeholder="Número da casa/loja" required>
+                </div>
+                <div class="campo-endereco">
+                    <label>CEP *</label>
+                    <input type="text" id="campo-cep" placeholder="00000000" value="18206600" required>
+                </div>
+                <div class="campo-endereco">
+                    <label>Complemento (opcional)</label>
+                    <input type="text" id="campo-complemento" placeholder="Apto, sala, etc...">
+                </div>
+            </div>
+
+            <div class="carrinho-separador"></div>
+
+            <!-- Formas de Pagamento -->
+            <div class="carrinho-secao">
+                <h4>💳 Formas de Pagamento</h4>
+                <label class="checkbox-carrinho">
+                    <input type="radio" name="pagamento-carrinho" class="pagamento-carrinho" value="dinheiro" checked onchange="mostrarOpcaoTroco()">
+                    <span>💵 Dinheiro</span>
+                </label>
+                <div id="opcao-troco" class="opcao-troco">
+                    <label class="checkbox-carrinho">
+                        <input type="checkbox" id="checkbox-troco" value="troco" onchange="mostrarCampoTroco()">
+                        <span>💰 Com Troco</span>
+                    </label>
+                    <div id="campo-valor-troco" class="campo-valor-troco" style="display:block;">
+                        <label>Troco para: R$ *</label>
+                        <input type="number" id="valor-troco" placeholder="20.00" min="0" step="0.01" required>
+                    </div>
+                </div>
+                <label class="checkbox-carrinho">
+                    <input type="radio" name="pagamento-carrinho" class="pagamento-carrinho" value="debito" onchange="mostrarOpcaoTroco()">
+                    <span>🏧 Débito</span>
+                </label>
+                <label class="checkbox-carrinho">
+                    <input type="radio" name="pagamento-carrinho" class="pagamento-carrinho" value="credito" onchange="mostrarOpcaoTroco()">
+                    <span>💳 Crédito</span>
+                </label>
+                <label class="checkbox-carrinho">
+                    <input type="radio" name="pagamento-carrinho" class="pagamento-carrinho" value="pix" onchange="mostrarOpcaoTroco()">
+                    <span>📱 Pix</span>
+                </label>
+                
+            </div>
+
+            <div class="carrinho-separador"></div>
+
+            <!-- Botões -->
+            <div class="carrinho-botoes">
+                <button class="btn-cancelar" onclick="fecharCarrinho()">Cancelar</button>
+                <button class="btn-confirmar" onclick="finalizarCompra()">✓ Confirmar e Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sobre Hidroluz -->
+    <section class="sobre" id="sobre">
+        <div class="container">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="sobre-content">
+                <div class="sobre-texto">
+                    <h3>Bem-vindo à Hidroluz</h3>
+                    <p>Desde 2010, a Hidroluz é sinônimo de qualidade e confiança em Itapetininga. Começamos com uma pequena loja e hoje contamos com 3 unidades estrategicamente localizadas para melhor atendê-lo.</p>
+                    <p>Nosso compromisso é fornecer as melhores ferramentas para construção e reforma, com preços justos e um atendimento excepcional. Temos a entrega mais rápida da região, muitas vezes no mesmo dia!</p>
+                    <div class="sobre-stats">
+                        <div class="stat">
+                            <h4>+13 Anos</h4>
+                            <p>De experiência</p>
+                        </div>
+                        <div class="stat">
+                            <h4>3 Lojas</h4>
+                            <p>Em Itapetininga</p>
+                        </div>
+                        <div class="stat">
+                            <h4>1000+</h4>
+                            <p>Clientes satisfeitos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-marcas">
+                    <h3>Marcas Parceiras</h3>
+                    <div class="marcas-grid">
+                        <div class="marca-item">
+                            <img src="img/makita.png" alt="Makita">
+                            <p>Makita</p>
+                        </div>
+                        <div class="marca-item">
+                            <img src="img/astra.jpg" alt="Tramontina">
+                            <p>Astra</p>
+                        </div>
+                        <div class="marca-item">
+                            <img src="img/bosch.png" alt="Bosch">
+                            <p>Bosch</p>
+                        </div>
+                        <div class="marca-item">
+                            <img src="img/tigre.png" alt="Tigre">
+                            <p>Tigre</p>
+                        </div>
+                        <div class="marca-item">
+                            <img src="img/vonder.jpg" alt="Vonder">
+                            <p>Vonder</p>
+                        </div>
+                        <div class="marca-item">
+                            <img src="img/krona.png" alt="krona">
+                            <p>krona</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>HIDROLUZ</h3>
+                    <p>Aluguel de Ferramentas em Itapetininga</p>
+                </div>
+                <div>
+                    <p>3 Lojas para melhor atendê-lo</p>
+                    <p>A entrega mais rápida da região</p>
+                </div>
+            </div>
+            <p class="copyright">© 2026 Hidroluz. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5515996639799" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">(15) 99663-9799</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
