@@ -294,7 +294,7 @@ function salvarDados() {
     endereco: document.getElementById("campo-endereco").value,
     numero: document.getElementById("campo-numero").value,
     cep: document.getElementById("campo-cep").value,
-    complemento: document.getElementById("campo-complemento").value,
+    vila: document.getElementById("campo-vila").value,
     entrega: entrega
   }
   localStorage.setItem("hidroluzDados", JSON.stringify(dados))
@@ -312,7 +312,7 @@ function carregarDadosSalvos() {
     document.getElementById("campo-endereco").value = obj.endereco || ""
     document.getElementById("campo-numero").value = obj.numero || ""
     document.getElementById("campo-cep").value = obj.cep || "18206600"
-    document.getElementById("campo-complemento").value = obj.complemento || ""
+    document.getElementById("campo-vila").value = obj.vila || ""
     
     if (obj.entrega) {
       document.querySelector(`input[name="entrega-carrinho"][value="${obj.entrega}"]`).checked = true
@@ -394,8 +394,9 @@ function finalizarCompra() {
     const endereco = document.getElementById("campo-endereco").value.trim()
     const numero = document.getElementById("campo-numero").value.trim()
     const cep = document.getElementById("campo-cep").value.trim()
+    const vila = document.getElementById("campo-vila").value.trim()
     
-    if (!nomeEntrega || !telefoneEntrega || !endereco || !numero || !cep) {
+    if (!nomeEntrega || !telefoneEntrega || !endereco || !numero || !cep || !vila) {
       alert("⚠️ Por favor, preencha todos os campos obrigatórios!")
       return
     }
@@ -461,15 +462,15 @@ function finalizarCompra() {
     const endereco = document.getElementById("campo-endereco").value
     const numero = document.getElementById("campo-numero").value
     const cep = document.getElementById("campo-cep").value
-    const complemento = document.getElementById("campo-complemento").value
+    const vila = document.getElementById("campo-vila").value
     
     textoWhatsApp += `*👤 ENTREGA EM CASA*\n`
     textoWhatsApp += `Nome: ${nomeEntrega}\n`
     textoWhatsApp += `Telefone: ${telefoneEntrega}\n`
     textoWhatsApp += `Endereço: ${endereco}, ${numero}\n`
     textoWhatsApp += `CEP: ${cep}\n`
-    if (complemento) {
-      textoWhatsApp += `Complemento: ${complemento}\n`
+    if (vila) {
+      textoWhatsApp += `Vila: ${vila}\n`
     }
     textoWhatsApp += `\n`
   }
