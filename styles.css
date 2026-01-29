@@ -11,13 +11,63 @@
   --cinza-claro: #f3f4f6;
   --cinza-escuro:rgb(41, 42, 44);
   --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --bege: #fac879;
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: var(--cinza-escuro);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(131, 131, 131, 0.85),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(30, 58, 95, 0.08),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      #f5f2ed 0%,
+      #ece7e0 45%,
+      #f9fafb 100%
+    );
+  background-attachment: fixed;
+  min-height: 100vh;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(
+      120deg,
+      rgba(30, 58, 95, 0.04),
+      rgba(30, 58, 95, 0.04) 1px,
+      transparent 1px,
+      transparent 14px
+    );
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+}
+.card,
+.produto-card,
+.sidebar,
+.loja-card,
+.modal-conteudo,
+.carrinho-produto {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(6px);
+  border-radius: 16px;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+
+
 
 /* ===== SIDEBAR DO CARRINHO ===== */
 .sidebar-carrinho {
@@ -40,7 +90,7 @@ body {
 }
 
 .sidebar-header {
-  background: var(--azul-marinho);
+  background: rgb(187, 183, 183);
   color: white;
   padding: 1.5rem;
   display: flex;
@@ -256,20 +306,22 @@ body {
   flex-shrink: 0;
 }
 
-.foto img {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--cinza-escuro);
-  display: block;
-}
+
 
 .logo h1 {
-  font-size: 2rem;
-  color: var(--amarelo-medio);
+  font-size: 2.8rem;
+  color: var(--branco);
   margin-bottom: 0.2rem;
-  
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+.hidro {
+  color: var(--branco);
+}
+
+.luz {
+  color: var(--amarelo-medio);
 }
 
 .logo p {
@@ -295,9 +347,10 @@ body {
 
 .banner {
   position: relative;
-  height: 500px;
+  height: 600px;
+  width: 100%;
   overflow: hidden;
-  background: var(--cinza-escuro);
+  background: #000;
 }
 
 .banner-slide {
@@ -312,19 +365,10 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  top: 0;
+  left: 0;
 }
 
-.banner-slide:nth-child(1) {
-  background-image: url('img/banner.png');
-}
-
-.banner-slide:nth-child(2) {
-  background-image: url('img/banner2.jpg');
-}
-
-.banner-slide:nth-child(3) {
-  background-image: url('img/banner3.png');
-}
 
 .banner-slide.active {
   opacity: 1;
@@ -333,14 +377,48 @@ body {
 .banner-content {
   text-align: center;
   color: var(--branco);
-  padding: 2rem;
+  padding: 0;
   animation: slideUp 1s ease-out;
   position: relative;
   z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .banner-content img {
-  display: none;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+.banner-video {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.banner-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @keyframes slideUp {
@@ -436,7 +514,7 @@ body {
 /* Destaque Entrega Rápida */
 .fast-delivery {
   background: var(--amarelo-medio);
-  padding: 2rem 0;
+  padding: 0.5rem 0;
 }
 
 .delivery-content {
