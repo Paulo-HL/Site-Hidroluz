@@ -598,4 +598,3 @@ document.addEventListener("DOMContentLoaded", () => {
   const produtos = document.querySelectorAll(".produto-card")
   produtos.forEach(p => p.style.display = "flex")
 })
-

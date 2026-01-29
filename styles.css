@@ -285,6 +285,52 @@ body::before {
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .btn-carrinho-flutuante {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-carrinho-flutuante {
+    width: 58px;
+    height: 58px;
+    font-size: 22px;
+    bottom: 95px;
+    right: 18px;
+  }
+}
+
+@media (max-width: 414px) {
+  .btn-carrinho-flutuante {
+    width: 56px;
+    height: 56px;
+    font-size: 21px;
+    bottom: 90px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .btn-carrinho-flutuante {
+    width: 54px;
+    height: 54px;
+    font-size: 20px;
+    bottom: 88px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-carrinho-flutuante {
+    width: 52px;
+    height: 52px;
+    font-size: 19px;
+    bottom: 85px;
+    right: 14px;
+  }
+}
+
 .btn-carrinho-flutuante:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
@@ -305,6 +351,26 @@ body::before {
   font-size: 0.75rem;
   font-weight: bold;
   border: 2px solid white;
+}
+
+@media (max-width: 480px) {
+  .carrinho-badge {
+    width: 26px;
+    height: 26px;
+    font-size: 0.7rem;
+    top: -6px;
+    right: -6px;
+  }
+}
+
+@media (max-width: 360px) {
+  .carrinho-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 0.65rem;
+    top: -5px;
+    right: -5px;
+  }
 }
 
 .container {
@@ -356,6 +422,33 @@ body::before {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .header .container {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header .container {
+    gap: 0.8rem;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 414px) {
+  .header .container {
+    gap: 0.6rem;
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 375px) {
+  .header .container {
+    gap: 0.5rem;
+    padding: 0 6px;
+  }
 }
 
 .foto {
@@ -419,6 +512,7 @@ body::before {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 @media (max-width: 768px) {
@@ -433,17 +527,58 @@ body::before {
   }
 }
 
+@media (max-width: 414px) {
+  .nav {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav {
+    gap: 0.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    gap: 0.3rem;
+  }
+}
+
 .nav a {
   color: var(--branco);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
   white-space: nowrap;
+  padding: 0.3rem 0.5rem;
 }
 
 @media (max-width: 480px) {
   .nav a {
     font-size: 0.85rem;
+    padding: 0.25rem 0.4rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .nav a {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.3rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .nav a {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav a {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.2rem;
   }
 }
 
@@ -457,7 +592,7 @@ body::before {
   width: 100%;
   max-width: 100vw;
   overflow: hidden;
-  background: #000;
+  background: transparent;
 }
 
 @media (max-width: 1024px) {
@@ -567,7 +702,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center center;
   display: block;
 }
@@ -576,7 +711,7 @@ body::before {
   .banner-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 }
@@ -585,7 +720,7 @@ body::before {
   .banner-video {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 }
@@ -941,6 +1076,31 @@ body::before {
   .cards-produtos {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
+    padding: 0 0.3rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .cards-produtos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .cards-produtos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 0 0.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .cards-produtos {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem;
+    padding: 0 0.15rem;
   }
 }
 
@@ -985,6 +1145,46 @@ body::before {
   }
 }
 
+@media (max-width: 480px) {
+  .produto-image {
+    height: 150px;
+  }
+  
+  .produto-image img {
+    padding: 0.4rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .produto-image {
+    height: 140px;
+  }
+  
+  .produto-image img {
+    padding: 0.3rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .produto-image {
+    height: 130px;
+  }
+  
+  .produto-image img {
+    padding: 0.25rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .produto-image {
+    height: 120px;
+  }
+  
+  .produto-image img {
+    padding: 0.2rem;
+  }
+}
+
 .badge-produto {
   position: absolute;
   top: 10px;
@@ -1002,6 +1202,35 @@ body::before {
   font-size: 1.1rem;
   padding: 1rem 1rem 0.5rem;
   margin: 0;
+  line-height: 1.3;
+}
+
+@media (max-width: 480px) {
+  .produto-card h3 {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.7rem 0.3rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .produto-card h3 {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.6rem 0.25rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .produto-card h3 {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.5rem 0.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .produto-card h3 {
+    font-size: 0.8rem;
+    padding: 0.45rem 0.45rem 0.15rem;
+  }
 }
 
 .produto-card .descricao {
@@ -1009,6 +1238,36 @@ body::before {
   color: var(--cinza-escuro);
   font-size: 0.9rem;
   margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 480px) {
+  .produto-card .descricao {
+    font-size: 0.8rem;
+    padding: 0 0.7rem;
+    margin: 0.3rem 0;
+  }
+}
+
+@media (max-width: 414px) {
+  .produto-card .descricao {
+    font-size: 0.75rem;
+    padding: 0 0.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .produto-card .descricao {
+    font-size: 0.7rem;
+    padding: 0 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .produto-card .descricao {
+    font-size: 0.65rem;
+    padding: 0 0.45rem;
+  }
 }
 
 .preco {
@@ -1018,12 +1277,70 @@ body::before {
   color: var(--amarelo-medio);
 }
 
+@media (max-width: 480px) {
+  .preco {
+    font-size: 1.2rem;
+    padding: 0.4rem 0.7rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .preco {
+    font-size: 1.1rem;
+    padding: 0.35rem 0.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .preco {
+    font-size: 1rem;
+    padding: 0.3rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .preco {
+    font-size: 0.95rem;
+    padding: 0.25rem 0.45rem;
+  }
+}
+
 .estoque {
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+@media (max-width: 480px) {
+  .estoque {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .estoque {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .estoque {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .estoque {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.65rem;
+  }
 }
 
 .estoque-badge {
@@ -1032,6 +1349,28 @@ body::before {
   padding: 0.2rem 0.6rem;
   border-radius: 20px;
   font-weight: 600;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 480px) {
+  .estoque-badge {
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .estoque-badge {
+    padding: 0.12rem 0.4rem;
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .estoque-badge {
+    padding: 0.1rem 0.35rem;
+    font-size: 0.6rem;
+  }
 }
 
 .quantidade {
@@ -1047,6 +1386,40 @@ body::before {
   margin: 0.5rem 1rem;
   border-radius: 4px;
   animation: pulse 1.5s infinite;
+  line-height: 1.3;
+}
+
+@media (max-width: 480px) {
+  .alerta-promocao {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.75rem;
+    margin: 0.4rem 0.7rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .alerta-promocao {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+    margin: 0.3rem 0.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .alerta-promocao {
+    padding: 0.45rem 0.5rem;
+    font-size: 0.68rem;
+    margin: 0.25rem 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .alerta-promocao {
+    padding: 0.4rem 0.45rem;
+    font-size: 0.65rem;
+    margin: 0.2rem 0.45rem;
+    border-left-width: 3px;
+  }
 }
 
 @keyframes pulse {
@@ -1066,6 +1439,34 @@ body::before {
   margin-top: auto;
 }
 
+@media (max-width: 480px) {
+  .produto-opcoes {
+    gap: 0.4rem;
+    padding: 0.7rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .produto-opcoes {
+    gap: 0.3rem;
+    padding: 0.6rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .produto-opcoes {
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .produto-opcoes {
+    gap: 0.2rem;
+    padding: 0.4rem;
+  }
+}
+
 .btn-pequeno,
 .btn-pequeno-sec {
   padding: 0.7rem 1rem;
@@ -1075,6 +1476,38 @@ body::before {
   font-weight: 600;
   font-size: 0.85rem;
   transition: all 0.3s;
+}
+
+@media (max-width: 480px) {
+  .btn-pequeno,
+  .btn-pequeno-sec {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .btn-pequeno,
+  .btn-pequeno-sec {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .btn-pequeno,
+  .btn-pequeno-sec {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-pequeno,
+  .btn-pequeno-sec {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.65rem;
+  }
 }
 
 .btn-pequeno {
@@ -1640,6 +2073,43 @@ body::before {
   transform: scale(1.05);
 }
 
+@media (max-width: 768px) {
+  .loja-card {
+    padding: 1.8rem;
+  }
+  
+  .loja-card:hover {
+    transform: scale(1.02);
+  }
+}
+
+@media (max-width: 480px) {
+  .loja-card {
+    padding: 1.5rem;
+    border-left-width: 4px;
+  }
+}
+
+@media (max-width: 414px) {
+  .loja-card {
+    padding: 1.3rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .loja-card {
+    padding: 1.2rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .loja-card {
+    padding: 1rem;
+    border-left-width: 3px;
+  }
+}
+
 .loja-number {
   display: inline-block;
   background: var(--azul-marinho);
@@ -1655,15 +2125,92 @@ body::before {
   margin-bottom: 1rem;
 }
 
+@media (max-width: 480px) {
+  .loja-number {
+    font-size: 1.8rem;
+    width: 55px;
+    height: 55px;
+  }
+}
+
+@media (max-width: 375px) {
+  .loja-number {
+    font-size: 1.6rem;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 360px) {
+  .loja-number {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+  }
+}
+
 .loja-card h3 {
   color: var(--azul-marinho);
   font-size: 1.5rem;
   margin-bottom: 1rem;
 }
 
+@media (max-width: 480px) {
+  .loja-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .loja-card h3 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .loja-card h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .loja-card h3 {
+    font-size: 1.15rem;
+  }
+}
+
 .loja-card p {
   margin-bottom: 0.5rem;
   color: var(--cinza-escuro);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .loja-card p {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .loja-card p {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .loja-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.35rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .loja-card p {
+    font-size: 0.82rem;
+  }
 }
 
 .contact-form {
@@ -1693,6 +2240,21 @@ body::before {
   background: var(--azul-marinho);
   color: var(--branco);
   padding: 3rem 0 1rem;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 1.5rem 0 0.8rem;
+  }
 }
 
 .footer-content {
@@ -1703,9 +2265,55 @@ body::before {
   gap: 2rem;
 }
 
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .footer h3 {
   color: var(--amarelo-medio);
   margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 480px) {
+  .footer h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer h3 {
+    font-size: 1rem;
+  }
+}
+
+.footer p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .footer p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer p {
+    font-size: 0.85rem;
+  }
 }
 
 .copyright {
@@ -1713,6 +2321,23 @@ body::before {
   padding-top: 2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 480px) {
+  .copyright {
+    padding-top: 1.5rem;
+    font-size: 0.85rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .copyright {
+    padding-top: 1rem;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1814,6 +2439,52 @@ body::before {
   z-index: 1000;
 }
 
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    width: 56px;
+    height: 56px;
+    font-size: 28px;
+    bottom: 85px;
+    right: 18px;
+  }
+}
+
+@media (max-width: 414px) {
+  .whatsapp-float {
+    width: 54px;
+    height: 54px;
+    font-size: 27px;
+    bottom: 82px;
+    right: 16px;
+  }
+}
+
+@media (max-width: 375px) {
+  .whatsapp-float {
+    width: 52px;
+    height: 52px;
+    font-size: 26px;
+    bottom: 80px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    bottom: 78px;
+    right: 14px;
+  }
+}
+
 .whatsapp-float:hover {
   transform: scale(1.1);
 }
@@ -1831,6 +2502,14 @@ body::before {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
+}
+
+@media (max-width: 480px) {
+  .whatsapp-tooltip {
+    font-size: 12px;
+    padding: 4px 8px;
+    bottom: 65px;
+  }
 }
 
 .whatsapp-float:hover .whatsapp-tooltip {
@@ -2048,6 +2727,82 @@ body::before {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
+  
+  .sidebar-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .sidebar-item {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .sidebar-item-nome {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar-header h3 {
+    font-size: 1rem;
+  }
+  
+  .sidebar-item {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  
+  .sidebar-item-detalhes {
+    font-size: 0.75rem;
+  }
+  
+  .resumo-linha {
+    font-size: 0.85rem;
+  }
+  
+  .resumo-linha.total {
+    font-size: 1rem;
+  }
+  
+  .resumo-linha.total span:last-child {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 414px) {
+  .btn-abrir-carrinho,
+  .btn-limpar-carrinho {
+    padding: 0.9rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .sidebar-header h3 {
+    font-size: 0.95rem;
+  }
+  
+  .btn-abrir-carrinho,
+  .btn-limpar-carrinho {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .sidebar-header {
+    padding: 1.2rem;
+  }
+  
+  .sidebar-header h3 {
+    font-size: 0.9rem;
+  }
+  
+  .btn-abrir-carrinho,
+  .btn-limpar-carrinho {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* ===== MOBILE EXTRA - GARANTIA DE RESPONSIVIDADE ===== */
@@ -2104,7 +2859,7 @@ img, video, iframe {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
 }
 
@@ -2151,6 +2906,180 @@ section, div, header, footer, main, article, aside {
   overflow-x: hidden;
 }
 
+/* ===== OTIMIZA\u00c7\u00d5ES ESPEC\u00cdFICAS PARA SAMSUNG ===== */
+@media screen and (max-width: 768px) {
+  /* One UI (Samsung) - Prevenir problemas com browser bar */
+  body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  /* Samsung Internet Browser - Otimiza\u00e7\u00f5es */
+  .banner,
+  .banner-slide,
+  .banner-content {
+    position: relative;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  .banner-video {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .header .container,
+  .container {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  
+  /* Prevenir problemas de renderiza\u00e7\u00e3o no Samsung Internet */
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Galaxy S23, S23+, S23 Ultra (360x780, 393x873) */
+@media (min-width: 360px) and (max-width: 395px) {
+  .produto-card {
+    min-height: 350px;
+  }
+  
+  .modal-conteudo {
+    width: 92%;
+  }
+}
+
+/* Samsung Galaxy Fold (280x653 fechado) */
+@media (max-width: 280px) {
+  .header {
+    padding: 0.5rem 0;
+  }
+  
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+  
+  .logo p {
+    font-size: 0.55rem;
+  }
+  
+  .nav {
+    gap: 0.2rem;
+  }
+  
+  .nav a {
+    font-size: 0.65rem;
+    padding: 0.05rem 0.15rem;
+  }
+  
+  .banner {
+    height: 280px;
+  }
+  
+  .cards-produtos {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 0 0.2rem;
+  }
+  
+  .section-title {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== OTIMIZA\u00c7\u00d5ES PARA XIAOMI (MIUI) ===== */
+@media screen and (max-width: 768px) {
+  /* MIUI Browser - Ajustes espec\u00edficos */
+  .header {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+  
+  /* Redmi Note 10, 11, 12 series */
+  @media (min-width: 390px) and (max-width: 395px) {
+    .cards-produtos {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+}
+
+/* ===== OTIMIZA\u00c7\u00d5ES PARA MOTOROLA ===== */
+@media screen and (max-width: 768px) {
+  /* Moto G series - Ajustes */
+  @media (min-width: 360px) and (max-width: 365px) {
+    .header .container {
+      padding: 0 8px;
+    }
+    
+    .produto-image {
+      height: 135px;
+    }
+  }
+  
+  /* Motorola Edge series */
+  @media (min-width: 410px) and (max-width: 415px) {
+    .banner {
+      height: 388px;
+    }
+    
+    .produto-card h3 {
+      font-size: 0.95rem;
+    }
+  }
+}
+
+/* ===== FIX PARA NOTCH/DYNAMIC ISLAND (iPhone) ===== */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+  
+  .header {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .modal-conteudo {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+  
+  .sidebar-carrinho {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+}
+
+/* ===== PERFORMANCE E ACESSIBILIDADE ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark mode support para dispositivos configurados */
+@media (prefers-color-scheme: dark) {
+  @media (max-width: 768px) {
+    .produto-card,
+    .loja-card,
+    .card {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
 /* ===== OTIMIZAÇÕES FINAIS MOBILE iOS E ANDROID ===== */
 @media (max-width: 768px) {
   /* Prevenir zoom em inputs no iOS */
@@ -2161,12 +3090,21 @@ section, div, header, footer, main, article, aside {
   /* Smooth scrolling para mobile */
   html {
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
   }
   
   /* Remover highlight azul no tap - iOS/Android */
   * {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Permitir seleção em inputs e text areas */
+  input, textarea, [contenteditable="true"] {
+    -webkit-user-select: text;
+    user-select: text;
   }
   
   /* Otimizar animações para mobile */
@@ -2195,17 +3133,61 @@ section, div, header, footer, main, article, aside {
     max-width: 95vw !important;
     max-height: 90vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Melhorar performance de scroll */
+  .sidebar-lista-produtos,
+  .cards-produtos {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Touch targets maiores para melhor usabilidade */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Prevenir comportamento padrão de pull-to-refresh em alguns browsers */
+  body {
+    overscroll-behavior-y: contain;
   }
 }
 
-/* Ajustes para telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 375px) {
-  .nav {
-    gap: 0.5rem;
+/* ===== AJUSTES ESPEC\u00cdFICOS PARA DIFERENTES DISPOSITIVOS M\u00d3VEIS ===== */
+
+/* iPhone 12 Pro, 13, 14, Galaxy S21, S22, Xiaomi Mi 11 (390x844) */
+@media (max-width: 390px) {
+  .logo h1 {
+    font-size: 1.5rem;
   }
   
-  .nav a {
-    font-size: 0.75rem;
+  .banner {
+    height: 370px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* iPhone SE, Galaxy S10e, Moto G7 (375x667) */
+@media (max-width: 375px) {
+  .logo h1 {
+    font-size: 1.4rem;
+  }
+  
+  .logo p {
+    font-size: 0.65rem;
+  }
+  
+  .nav {
+    gap: 0.4rem;
+  }
+  
+  .banner {
+    height: 360px;
   }
   
   .cards-produtos {
@@ -2217,11 +3199,188 @@ section, div, header, footer, main, article, aside {
     border-radius: 8px;
   }
   
-  .produto-image {
-    height: 150px;
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .lojas-grid {
+    gap: 1rem;
+  }
+  
+  .loja-card {
+    padding: 1.5rem;
+  }
+  
+  .loja-card h3 {
+    font-size: 1.3rem;
+  }
+  
+  .loja-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Galaxy A, Moto G, Redmi Note (360x640) */
+@media (max-width: 360px) {
+  .header {
+    padding: 0.7rem 0;
+  }
+  
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+  
+  .logo p {
+    font-size: 0.6rem;
+  }
+  
+  .nav {
+    gap: 0.3rem;
+  }
+  
+  .nav a {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.2rem;
+  }
+  
+  .banner {
+    height: 340px;
+  }
+  
+  .delivery-content h3 {
+    font-size: 1rem;
+  }
+  
+  .delivery-content p {
+    font-size: 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+  
+  .cards-produtos {
+    gap: 0.4rem;
+    padding: 0 0.15rem;
+  }
+  
+  .btn-carrinho-flutuante {
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+    bottom: 90px;
+    right: 15px;
+  }
+  
+  .whatsapp-float {
+    width: 55px;
+    height: 55px;
+    font-size: 26px;
+    bottom: 80px;
+    right: 15px;
+  }
+  
+  .carrinho-badge {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+}
+
+/* Galaxy S8+, Pixel 2 XL (412x824) */
+@media (min-width: 411px) and (max-width: 414px) {
+  .logo h1 {
+    font-size: 1.55rem;
+  }
+  
+  .banner {
+    height: 385px;
+  }
+  
+  .nav a {
+    font-size: 0.82rem;
+  }
+}
+
+/* iPhone 14 Pro Max, 13 Pro Max, Galaxy S22 Ultra (428x926) */
+@media (min-width: 415px) and (max-width: 430px) {
+  .logo h1 {
+    font-size: 1.7rem;
+  }
+  
+  .banner {
+    height: 400px;
+  }
+  
+  .nav a {
+    font-size: 0.9rem;
+  }
+  
+  .section-title {
+    font-size: 1.9rem;
+  }
+}
+
+/* Modo paisagem para dispositivos m\u00f3veis */
+@media (max-height: 500px) and (orientation: landscape) {
+  .banner {
+    height: 300px;
+    min-height: 280px;
+  }
+  
+  .header {
+    padding: 0.6rem 0;
+  }
+  
+  .logo h1 {
+    font-size: 1.3rem;
+  }
+  
+  .logo p {
+    font-size: 0.7rem;
+  }
+  
+  .nav a {
+    font-size: 0.8rem;
+  }
+  
+  .delivery-content {
+    padding: 0.5rem 1rem;
+  }
+  
+  .delivery-content h3 {
+    font-size: 1rem;
+  }
+  
+  .delivery-content p {
+    font-size: 0.85rem;
   }
   
   .section-title {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .produto-image {
+    height: 140px;
+  }
+}
+
+/* Xiaomi Redmi Note 9, 10 (393x851) */
+@media (min-width: 391px) and (max-width: 395px) {
+  .banner {
+    height: 375px;
+  }
+  
+  .logo h1 {
+    font-size: 1.52rem;
+  }
+}
+
+/* Motorola Moto G Power, One (412x915) */
+@media (min-width: 411px) and (max-width: 413px) {
+  .banner {
+    height: 390px;
   }
 }
