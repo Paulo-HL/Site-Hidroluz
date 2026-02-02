@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Meu Carrinho - Hidroluz</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos específicos da página do carrinho */
+        .carrinho-page {
+            padding: 5rem 1rem 2rem;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f2ed 0%, #ece7e0 45%, #f9fafb 100%);
+        }
+        
+        .carrinho-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .carrinho-header h1 {
+            color: var(--azul-marinho);
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .btn-voltar {
+            background: var(--cinza-claro);
+            color: var(--azul-marinho);
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .btn-voltar:hover {
+            background: #e5e7eb;
+            transform: translateX(-3px);
+        }
+        
+        .carrinho-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .carrinho-vazio {
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .carrinho-vazio i {
+            font-size: 4rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+        
+        .carrinho-vazio h2 {
+            color: var(--azul-marinho);
+            margin-bottom: 0.5rem;
+        }
+        
+        .carrinho-vazio p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-ir-produtos {
+            background: var(--amarelo-medio);
+            color: var(--azul-marinho);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .btn-ir-produtos:hover {
+            background: #f59e0b;
+            transform: translateY(-2px);
+        }
+        
+        .carrinho-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 2rem;
+        }
+        
+        .carrinho-items {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .carrinho-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .carrinho-item:last-child {
+            border-bottom: none;
+        }
+        
+        .item-info {
+            flex: 1;
+        }
+        
+        .item-info h3 {
+            color: var(--azul-marinho);
+            margin: 0 0 0.3rem 0;
+            font-size: 1rem;
+        }
+        
+        .item-preco {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--cinza-claro);
+            padding: 0.3rem 0.5rem;
+            border-radius: 8px;
+        }
+        
+        .qty-control button {
+            background: var(--amarelo-medio);
+            color: var(--azul-marinho);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qty-control span {
+            min-width: 25px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .item-total {
+            color: var(--amarelo-medio);
+            font-weight: bold;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        .btn-remove {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .carrinho-resumo {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+        
+        .carrinho-resumo h3 {
+            color: var(--azul-marinho);
+            margin: 0 0 1rem 0;
+        }
+        
+        .resumo-linha {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.7rem;
+            font-weight: 500;
+        }
+        
+        .resumo-linha.total {
+            font-size: 1.3rem;
+            color: var(--azul-marinho);
+            font-weight: bold;
+            border-top: 2px solid var(--amarelo-medio);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .resumo-linha.total span:last-child {
+            color: var(--amarelo-medio);
+        }
+        
+        .form-section {
+            margin-top: 1.5rem;
+        }
+        
+        .form-section h4 {
+            color: var(--azul-marinho);
+            margin: 0 0 0.8rem 0;
+            font-size: 1rem;
+        }
+        
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem;
+            background: var(--cinza-claro);
+            border-radius: 8px;
+            margin-bottom: 0.6rem;
+            cursor: pointer;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 0.7rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            font-size: 0.9rem;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: var(--amarelo-medio);
+        }
+        
+        .btn-finalizar {
+            width: 100%;
+            background: var(--amarelo-medio);
+            color: var(--azul-marinho);
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.05rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-finalizar:active {
+            transform: scale(0.98);
+        }
+        
+        /* Mobile responsivo */
+        @media (max-width: 768px) {
+            .carrinho-page {
+                padding: 4.5rem 0.8rem 1.5rem;
+            }
+            
+            .carrinho-header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .carrinho-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .carrinho-resumo {
+                position: static;
+            }
+            
+            .carrinho-item {
+                flex-wrap: wrap;
+            }
+            
+            .item-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1><span class="hidro">HIDRO</span><span class="luz">LUZ</span></h1>
+                <p>Itapetininga - SP</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Página do Carrinho -->
+    <section class="carrinho-page">
+        <div class="container">
+            <div class="carrinho-header">
+                <h1>🛒 Meu Carrinho</h1>
+                <a href="index.html#produtos" class="btn-voltar">
+                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                </a>
+            </div>
+
+            <div class="carrinho-container">
+                <!-- Carrinho Vazio -->
+                <div id="carrinho-vazio" class="carrinho-vazio">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Seu carrinho está vazio</h2>
+                    <p>Adicione produtos para continuar</p>
+                    <a href="index.html#produtos" class="btn-ir-produtos">Ver Produtos</a>
+                </div>
+
+                <!-- Carrinho com Produtos -->
+                <div id="carrinho-com-itens" class="carrinho-content" style="display: none;">
+                    <div class="carrinho-items" id="lista-items"></div>
+                    
+                    <div class="carrinho-resumo">
+                        <h3>Resumo do Pedido</h3>
+                        <div class="resumo-linha">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha total">
+                            <span>Total:</span>
+                            <span id="total">R$ 0,00</span>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4>Tipo de Entrega</h4>
+                            <label class="radio-option">
+                                <input type="radio" name="entrega" value="retirada" checked onchange="toggleEntrega()">
+                                <span>🏪 Retirar na Loja</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="entrega" value="entrega" onchange="toggleEntrega()">
+                                <span>🚚 Entrega em Casa</span>
+                            </label>
+                        </div>
+                        
+                        <div id="campos-retirada" class="form-section">
+                            <input type="text" id="nome-ret" placeholder="Nome *" class="input-field">
+                            <input type="tel" id="tel-ret" placeholder="Telefone *" class="input-field">
+                        </div>
+                        
+                        <div id="campos-entrega" class="form-section" style="display:none;">
+                            <input type="text" id="nome-ent" placeholder="Nome *" class="input-field">
+                            <input type="tel" id="tel-ent" placeholder="Telefone *" class="input-field">
+                            <input type="text" id="endereco" placeholder="Endereço *" class="input-field">
+                            <input type="text" id="numero" placeholder="Número *" class="input-field">
+                            <input type="text" id="cep" placeholder="CEP *" value="18206600" class="input-field">
+                            <input type="text" id="bairro" placeholder="Bairro *" class="input-field">
+                        </div>
+                        
+                        <div class="form-section">
+                            <h4>Forma de Pagamento</h4>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="pgto" value="dinheiro" onchange="toggleTroco()">
+                                <span>💵 Dinheiro</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="pgto" value="pix">
+                                <span>📱 PIX</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="pgto" value="debito">
+                                <span>💳 Débito</span>
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="pgto" value="credito">
+                                <span>💳 Crédito</span>
+                            </label>
+                            
+                            <div id="troco-section" style="display:none; margin-top:0.8rem;">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" id="precisa-troco" onchange="toggleValorTroco()">
+                                    <span>💰 Preciso de troco</span>
+                                </label>
+                                <input type="number" id="valor-troco" placeholder="Troco para quanto?" class="input-field" style="display:none;">
+                            </div>
+                        </div>
+                        
+                        <button class="btn-finalizar" onclick="finalizarPedido()">
+                            <i class="fas fa-check-circle"></i> Finalizar Pedido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="carrinho.js"></script>
+</body>
+</html>

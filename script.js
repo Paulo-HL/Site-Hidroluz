@@ -110,6 +110,7 @@ let produtoAtual = {
 document.addEventListener("DOMContentLoaded", () => {
   carregarDadosSalvos()
   atualizarResumo()
+  atualizarBadge()
   
   const sliderPreco = document.querySelector(".filtro-preco")
   const valorPreco = document.querySelector("#preco-valor")
@@ -157,16 +158,31 @@ function adicionarProdutoAtual() {
 
 // Função para adicionar ao carrinho (chamada pelos botões dos produtos)
 function adicionarAoCarrinho(nome, preco) {
-  produtoAtual.nome = nome
-  produtoAtual.preco = preco
-  produtoAtual.quantidade = 1
+  // Carregar carrinho existente
+  let carrinho = JSON.parse(localStorage.getItem('hidroluzCarrinho')) || []
   
-  // Atualizar exibição do produto atual
-  document.getElementById("carrinho-nome").textContent = nome
-  document.getElementById("carrinho-preco").textContent = "R$ " + preco.toLocaleString("pt-BR", {minimumFractionDigits: 2})
-  document.getElementById("carrinho-quantidade").value = 1
+  // Verificar se produto já existe
+  const indice = carrinho.findIndex(p => p.nome === nome)
   
-  abrirCarrinho()
+  if (indice !== -1) {
+    carrinho[indice].quantidade += 1
+  } else {
+    carrinho.push({
+      nome: nome,
+      preco: preco,
+      quantidade: 1,
+      id: Date.now()
+    })
+  }
+  
+  // Salvar no localStorage
+  localStorage.setItem('hidroluzCarrinho', JSON.stringify(carrinho))
+  
+  // Atualizar badge
+  atualizarBadge()
+  
+  // Redirecionar para página do carrinho
+  window.location.href = 'carrinho.html'
 }
 
 function atualizarVisualizacaoCarrinho() {
@@ -180,6 +196,9 @@ function atualizarVisualizacaoCarrinho() {
   // Contar total de produtos
   const totalProdutos = carrinho.reduce((sum, item) => sum + item.quantidade, 0)
   badgeCarrinho.textContent = totalProdutos
+  
+  // Atualizar badge flutuante
+  atualizarBadge()
   
   if (carrinho.length === 0) {
     listaDiv.style.display = "none"
@@ -541,6 +560,18 @@ function mostrarCampoTroco() {
 // Função para ver detalhes
 function verDetalhes() {
   alert("ℹ️ Funcionalidade de detalhes em desenvolvimento.\n\nEscreva no WhatsApp para mais informações!")
+}
+
+// Função para atualizar badge do carrinho flutuante
+function atualizarBadge() {
+  const carrinho = JSON.parse(localStorage.getItem('hidroluzCarrinho')) || []
+  const totalItens = carrinho.reduce((sum, item) => sum + item.quantidade, 0)
+  const badgeFloat = document.getElementById('badge-float')
+  
+  if (badgeFloat) {
+    badgeFloat.textContent = totalItens
+    badgeFloat.style.display = totalItens > 0 ? 'flex' : 'none'
+  }
 }
 
 // Filtrar produtos
