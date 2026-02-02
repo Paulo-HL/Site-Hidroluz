@@ -19,11 +19,25 @@ function renderCarrinho() {
         vazio.style.display = 'none'
         comItens.style.display = 'grid'
         
-        listaItems.innerHTML = carrinho.map(item => `
+        listaItems.innerHTML = carrinho.map(item => {
+            const pgto = document.querySelector('input[name="pgto"]:checked')?.value
+            let precoUnitario = item.preco
+            let temDesconto = false
+            
+            // Aplicar desconto para lâmpadas com 10+ unidades APENAS com PIX ou Dinheiro
+            if (item.nome === "Lâmpada LED 50W" && item.quantidade >= 10 && (pgto === 'pix' || pgto === 'dinheiro')) {
+                precoUnitario = 2.99
+                temDesconto = true
+            }
+            
+            const subtotal = precoUnitario * item.quantidade
+            const descontoHTML = temDesconto ? '<span style="color: #10b981; font-size: 0.85rem; font-weight: 600;">🎉 Desconto PIX/Dinheiro!</span>' : ''
+            
+            return `
             <div class="carrinho-item">
                 <div class="item-info">
                     <h3>${item.nome}</h3>
-                    <p class="item-preco">R$ ${item.preco.toFixed(2).replace('.', ',')}</p>
+                    <p class="item-preco">R$ ${precoUnitario.toFixed(2).replace('.', ',')} ${descontoHTML}</p>
                 </div>
                 <div class="item-controls">
                     <div class="qty-control">
@@ -31,13 +45,14 @@ function renderCarrinho() {
                         <span>${item.quantidade}</span>
                         <button onclick="aumentar(${item.id})">+</button>
                     </div>
-                    <div class="item-total">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</div>
+                    <div class="item-total">R$ ${subtotal.toFixed(2).replace('.', ',')}</div>
                     <button class="btn-remove" onclick="remover(${item.id})">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
             </div>
-        `).join('')
+            `
+        }).join('')
     }
     
     atualizarResumo()
@@ -70,12 +85,36 @@ function remover(id) {
 }
 
 function atualizarResumo() {
+    const pgto = document.querySelector('input[name="pgto"]:checked')?.value
+    let subtotalOriginal = 0
     let total = 0
+    
     carrinho.forEach(item => {
-        total += item.preco * item.quantidade
+        subtotalOriginal += item.preco * item.quantidade
+        
+        let precoUnitario = item.preco
+        
+        // Aplicar desconto para lâmpadas com 10+ unidades APENAS com PIX ou Dinheiro
+        if (item.nome === "Lâmpada LED 50W" && item.quantidade >= 10 && (pgto === 'pix' || pgto === 'dinheiro')) {
+            precoUnitario = 2.99
+        }
+        
+        total += precoUnitario * item.quantidade
     })
     
-    document.getElementById('subtotal').textContent = 'R$ ' + total.toFixed(2).replace('.', ',')
+    const desconto = subtotalOriginal - total
+    const linhaDesconto = document.getElementById('linha-desconto')
+    const valorDesconto = document.getElementById('valor-desconto')
+    
+    document.getElementById('subtotal').textContent = 'R$ ' + subtotalOriginal.toFixed(2).replace('.', ',')
+    
+    if (desconto > 0) {
+        linhaDesconto.style.display = 'flex'
+        valorDesconto.textContent = '- R$ ' + desconto.toFixed(2).replace('.', ',')
+    } else {
+        linhaDesconto.style.display = 'none'
+    }
+    
     document.getElementById('total').textContent = 'R$ ' + total.toFixed(2).replace('.', ',')
 }
 
@@ -189,7 +228,13 @@ function finalizarPedido() {
             alert('⚠️ Digite o valor para o troco!')
             return
         }
-        const total = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0)
+        const total = carrinho.reduce((sum, item) => {
+            let precoUnitario = item.preco
+            if (item.nome === "Lâmpada LED 50W" && item.quantidade >= 10 && pgto === 'dinheiro') {
+                precoUnitario = 2.99
+            }
+            return sum + (precoUnitario * item.quantidade)
+        }, 0)
         if (valorTroco < total) {
             alert('⚠️ Valor do troco menor que o total!')
             return
@@ -198,49 +243,100 @@ function finalizarPedido() {
     
     salvarDados()
     
-    // Montar mensagem WhatsApp
-    let msg = '*📦 PEDIDO - HIDROLUZ*\\n\\n'
-    msg += '*PRODUTOS:*\\n'
-    msg += '━━━━━━━━━━━━━━\\n'
-    
-    let total = 0
-    carrinho.forEach((item, i) => {
-        const subtotal = item.preco * item.quantidade
-        total += subtotal
-        msg += `${i+1}. ${item.nome}\\n`
-        msg += `   R$ ${item.preco.toFixed(2)} x ${item.quantidade}\\n`
-        msg += `   Subtotal: R$ ${subtotal.toFixed(2)}\\n\\n`
+    // Gerar número do pedido
+    const numeroPedido = '#' + Date.now().toString().slice(-6)
+    const dataHora = new Date().toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
     })
     
-    msg += '━━━━━━━━━━━━━━\\n'
-    msg += `*TOTAL: R$ ${total.toFixed(2)}*\\n\\n`
+    // Montar mensagem WhatsApp profissional
+    let msg = ''
+    msg += '*PEDIDO FINALIZADO - HIDROLUZ* \n\n'
+    msg += `_Pedido ${numeroPedido}_\n`
+    msg += `_${dataHora}_\n`
+    msg += `_Itapetininga-SP_\n\n`
+    
+    msg += ' *PRODUTOS SOLICITADOS:*\n'
+    msg += '━━━━━━━━━━━━━━━━━\n'
+    
+    let subtotalOriginal = 0
+    let total = 0
+    carrinho.forEach((item, i) => {
+        let precoUnitario = item.preco
+        subtotalOriginal += item.preco * item.quantidade
+        
+        // Aplicar desconto para lâmpadas com 10+ unidades APENAS com PIX ou Dinheiro
+        if (item.nome === "Lâmpada LED 50W" && item.quantidade >= 10 && (pgto === 'pix' || pgto === 'dinheiro')) {
+            precoUnitario = 2.99
+        }
+        
+        const subtotal = precoUnitario * item.quantidade
+        total += subtotal
+        msg += `${i+1}. ${item.nome}\n`
+        msg += `    R$ ${precoUnitario.toFixed(2).replace('.', ',')} x ${item.quantidade}\n`
+        msg += `   Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n\n`
+    })
+    
+    const desconto = subtotalOriginal - total
+    if (desconto > 0) {
+        msg += `Subtotal original: R$ ${subtotalOriginal.toFixed(2).replace('.', ',')}\n`
+        msg += `🎉 Desconto aplicado: -R$ ${desconto.toFixed(2).replace('.', ',')}\n\n`
+    }
+    
+    msg += '━━━━━━━━━━━━━━━━━\n'
+    msg += `* TOTAL: R$ ${total.toFixed(2).replace('.', ',')}*\n`
+    msg += '━━━━━━━━━━━━━━━━━\n\n'
     
     if (tipo === 'retirada') {
-        msg += '*👤 RETIRADA NA LOJA*\\n'
-        msg += `Nome: ${document.getElementById('nome-ret').value}\\n`
-        msg += `Tel: ${document.getElementById('tel-ret').value}\\n\\n`
+        msg += ' *RETIRADA NA LOJA*\n\n'
+        msg += ` Nome: ${document.getElementById('nome-ret').value}\n`
+        msg += ` Telefone: ${document.getElementById('tel-ret').value}\n\n`
+        msg += ' *Endereço da Loja:*\n'
+        msg += ' Hidroluz - Itapetininga-SP\n'
+        msg += ' Horário: Segunda a Sexta, 8h às 17:59\n\n'
     } else {
-        msg += '*👤 ENTREGA*\\n'
-        msg += `Nome: ${document.getElementById('nome-ent').value}\\n`
-        msg += `Tel: ${document.getElementById('tel-ent').value}\\n`
-        msg += `End: ${document.getElementById('endereco').value}, ${document.getElementById('numero').value}\\n`
-        msg += `CEP: ${document.getElementById('cep').value}\\n`
-        msg += `Bairro: ${document.getElementById('bairro').value}\\n\\n`
+        msg += ' *ENTREGA NO ENDEREÇO...*\n\n'
+        msg += ` Endereço: ${document.getElementById('endereco').value}, ${document.getElementById('numero').value}\n`
+        msg += ` CEP: ${document.getElementById('cep').value}\n`
+        msg += ` Vila: ${document.getElementById('bairro').value}\n`
+        msg += ` Cidade: Itapetininga-SP\n\n`
+        msg += ` Nome: ${document.getElementById('nome-ent').value}\n`
+        msg += ` Telefone: ${document.getElementById('tel-ent').value}\n`
+        
     }
     
-    const pgtoLabels = {dinheiro: 'Dinheiro', pix: 'PIX', debito: 'Débito', credito: 'Crédito'}
-    msg += `💳 *Pagamento:* ${pgtoLabels[pgto]}\n`
+    const pgtoLabels = {
+        dinheiro: ' Dinheiro', 
+        pix: ' PIX', 
+        debito: ' Débito', 
+        credito: ' Crédito'
+    }
+    msg += ` *Pagamento:* ${pgtoLabels[pgto]}\n`
     
     if (valorTroco) {
-        msg += `💰 *Troco para:* R$ ${valorTroco.toFixed(2)}\\n`
+        const troco = valorTroco - total
+        msg += ` Troco para: R$ ${valorTroco.toFixed(2).replace('.', ',')}\n`
+        msg += ` Troco: R$ ${troco.toFixed(2).replace('.', ',')}\n`
     }
     
-    msg += '\\nAguardo confirmação! 😊'
+    const obs = document.getElementById('observacoes')?.value.trim()
+    if (obs) {
+        msg += `\n *Observações:*\n${obs}\n`
+    }
+    
+    msg += '\n━━━━━━━━━━━━━━━━━\n'
+    msg += 'Aguardamos sua confirmação! \n\n'
+    msg += ' Em caso de dúvidas, estamos à disposição.\n'
+    msg += 'Hidroluz - Qualidade e confiança!'
     
     const url = `https://wa.me/5515996639799?text=${encodeURIComponent(msg)}`
     window.open(url, '_blank')
     
-    alert('✅ Pedido enviado! Redirecionando...')
+    alert(' Pedido enviado! Redirecionando...')
     carrinho = []
     salvar()
     
