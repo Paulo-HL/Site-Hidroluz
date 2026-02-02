@@ -98,10 +98,10 @@ function toggleEntrega() {
 }
 
 function toggleTroco() {
-    const dinheiroChecked = document.querySelector('input[name="pgto"][value="dinheiro"]').checked
+    const pgtoSelecionado = document.querySelector('input[name="pgto"]:checked')?.value
     const trocoSection = document.getElementById('troco-section')
     
-    if (dinheiroChecked) {
+    if (pgtoSelecionado === 'dinheiro') {
         trocoSection.style.display = 'block'
     } else {
         trocoSection.style.display = 'none'
@@ -152,9 +152,9 @@ function finalizarPedido() {
     }
     
     const tipo = document.querySelector('input[name="entrega"]:checked')?.value
-    const pgtos = Array.from(document.querySelectorAll('input[name="pgto"]:checked')).map(el => el.value)
+    const pgto = document.querySelector('input[name="pgto"]:checked')?.value
     
-    if (pgtos.length === 0) {
+    if (!pgto) {
         alert('⚠️ Selecione uma forma de pagamento!')
         return
     }
@@ -229,7 +229,7 @@ function finalizarPedido() {
     }
     
     const pgtoLabels = {dinheiro: 'Dinheiro', pix: 'PIX', debito: 'Débito', credito: 'Crédito'}
-    msg += `💳 *Pagamento:* ${pgtos.map(p => pgtoLabels[p]).join(', ')}\\n`
+    msg += `💳 *Pagamento:* ${pgtoLabels[pgto]}\n`
     
     if (valorTroco) {
         msg += `💰 *Troco para:* R$ ${valorTroco.toFixed(2)}\\n`

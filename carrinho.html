@@ -280,6 +280,116 @@
             transform: scale(0.98);
         }
         
+        /* Correção para body/html não interferir nos botões */
+        html {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+        
+        body {
+            overflow-x: hidden !important;
+            overflow-y: auto !important;
+        }
+        
+        /* Botões Flutuantes Mobile */
+        .botoes-flutuantes-mobile {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            display: flex !important;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 99999 !important;
+            pointer-events: auto !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        .btn-float {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            pointer-events: auto !important;
+        }
+        
+        .btn-float.whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+        }
+        
+        .btn-float.voltar {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1e3a5f;
+        }
+        
+        .btn-float:active {
+            transform: scale(0.95);
+        }
+        
+        /* Mobile responsivo */
+        @media (max-width: 768px) {
+            .botoes-flutuantes-mobile {
+                bottom: 16px;
+                right: 16px;
+                gap: 10px;
+            }
+            
+            .btn-float {
+                width: 56px;
+                height: 56px;
+                font-size: 25px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .botoes-flutuantes-mobile {
+                bottom: 14px;
+                right: 14px;
+                gap: 9px;
+            }
+            
+            .btn-float {
+                width: 54px;
+                height: 54px;
+                font-size: 24px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .botoes-flutuantes-mobile {
+                bottom: 12px;
+                right: 12px;
+                gap: 8px;
+            }
+            
+            .btn-float {
+                width: 52px;
+                height: 52px;
+                font-size: 23px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .botoes-flutuantes-mobile {
+                bottom: 10px;
+                right: 10px;
+            }
+            
+            .btn-float {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+        }
+        
         /* Mobile responsivo */
         @media (max-width: 768px) {
             .carrinho-page {
@@ -382,20 +492,20 @@
                         
                         <div class="form-section">
                             <h4>Forma de Pagamento</h4>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="pgto" value="dinheiro" onchange="toggleTroco()">
+                            <label class="radio-option">
+                                <input type="radio" name="pgto" value="dinheiro" onchange="toggleTroco()">
                                 <span>💵 Dinheiro</span>
                             </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="pgto" value="pix">
+                            <label class="radio-option">
+                                <input type="radio" name="pgto" value="pix" onchange="toggleTroco()">
                                 <span>📱 PIX</span>
                             </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="pgto" value="debito">
+                            <label class="radio-option">
+                                <input type="radio" name="pgto" value="debito" onchange="toggleTroco()">
                                 <span>💳 Débito</span>
                             </label>
-                            <label class="checkbox-option">
-                                <input type="checkbox" name="pgto" value="credito">
+                            <label class="radio-option">
+                                <input type="radio" name="pgto" value="credito" onchange="toggleTroco()">
                                 <span>💳 Crédito</span>
                             </label>
                             
@@ -416,6 +526,16 @@
             </div>
         </div>
     </section>
+
+    <!-- Botões Flutuantes Mobile-Friendly -->
+    <div class="botoes-flutuantes-mobile">
+        <a href="https://wa.me/5515996639799" class="btn-float whatsapp" target="_blank" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="index.html#produtos" class="btn-float voltar" title="Continuar Comprando">
+            <i class="fas fa-shopping-bag"></i>
+        </a>
+    </div>
 
     <script src="carrinho.js"></script>
 </body>
